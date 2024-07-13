@@ -21,7 +21,7 @@ jobs:
         
       - name: "Install BuildStream2"
         run: |
-          sudo dnf install bubblewrap fuse3 git lzip patch python3 git
+          sudo dnf install -y bubblewrap fuse3 git lzip patch python3 git
           pip3 install buildstream buildstream-external bst-plugins-experimental          
 
       - name: "Clone repo"
