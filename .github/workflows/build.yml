@@ -24,6 +24,8 @@ jobs:
           sudo dnf install -y bubblewrap fuse3 git lzip patch python3 git python3-pip fuse3 fuse3-devel
           pip install buildstream buildstream-plugins buildstream-external bst-plugins-experimental dulwich         
 
+      - run: sudo ln -s /bin/fusermount /bin/fusermount3
+
       - name: "Clone repo"
         run: git clone https://github.com/WinsDominoes/rocm-flatpak
         
