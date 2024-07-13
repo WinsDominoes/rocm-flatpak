@@ -28,17 +28,19 @@ jobs:
         run: git clone https://github.com/WinsDominoes/rocm-flatpak
         
       - name: "Build .bst file"
-        run: |
-          bst build rocm-flatpak.bst
-          bst artifact checkout --directory ~/rocm-repo rocm-flatpak.bst
+        run: bst build rocm-flatpak.bst
+
+      - name: "Bst Artifact"
+        run: bst artifact checkout --directory ./rocm-repo rocm-flatpak.bst
           
+      - name: "Add Flatpak Remote"
+        run: flatpak remote-add --user rocm-repo ./rocm-repo --no-gpg-verify
+      
       - name: "Install Flatpak"
-        run: |
-          flatpak remote-add --user rocm-repo ~/rocm-repo --no-gpg-verify
-          flatpak install --user org.freedesktop.Platform.GL.ROCm
+        run: flatpak install --user org.freedesktop.Platform.GL.ROCm
 
       - name: "Build Flatpak"
-        run: flatpak build-bundle --runtime ~/rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 23.08
+        run: flatpak build-bundle --runtime ./rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 23.08
 
       - name: "Release to Github"
         uses: ncipollo/release-action@v1
