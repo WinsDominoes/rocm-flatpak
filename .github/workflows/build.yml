@@ -22,7 +22,7 @@ jobs:
       - name: "Install BuildStream2"
         run: |
           sudo dnf install -y bubblewrap fuse3 git lzip patch python3 git python3-pip
-          pip install buildstream buildstream-external bst-plugins-experimental dulwich         
+          pip install buildstream buildstream-plugins buildstream-external bst-plugins-experimental dulwich         
 
       - name: "Clone repo"
         run: git clone https://github.com/WinsDominoes/rocm-flatpak
